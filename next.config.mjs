@@ -8,6 +8,7 @@ const nextConfig = {
       },
     ],
   },
+  // Force clean deploy
 };
 
 export default nextConfig;
