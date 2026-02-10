@@ -34,7 +34,6 @@ export interface KPIData {
   purchases: number;
   investment: number;
   impressions: number;
-  reach: number;
   frequency: number;
   ctr: number;
   costPerPurchase: number;

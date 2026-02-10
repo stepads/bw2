@@ -28,15 +28,17 @@ export function useKPIData(): KPIData {
       (sum, d) => sum + safeNumber(d.link_clicks),
       0
     );
-    const uniqueDates = new Set(data.map((d) => d.date)).size;
+    const rowCount = data.length;
+    const avgFrequency = rowCount > 0
+      ? data.reduce((sum, d) => sum + safeDivide(safeNumber(d.impressions), 1), 0) / rowCount
+      : 0;
 
     return {
       roas: safeDivide(totalRevenue, totalSpend),
       purchases: totalPurchases,
       investment: totalSpend,
       impressions: totalImpressions,
-      reach: totalImpressions,
-      frequency: safeDivide(totalImpressions, Math.max(uniqueDates, 1)),
+      frequency: avgFrequency,
       ctr: safeDivide(totalClicks, totalImpressions) * 100,
       costPerPurchase: safeDivide(totalSpend, totalPurchases),
     };

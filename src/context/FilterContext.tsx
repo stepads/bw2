@@ -3,8 +3,12 @@
 import { createContext, useContext, useState, useCallback, useEffect, ReactNode } from 'react';
 import { MetaAdsRecord } from '@/types/meta-ads';
 import { getMetaAdsData } from '@/lib/queries';
+import { format, startOfMonth, endOfMonth } from 'date-fns';
 
 const ACCOUNT_NAME = process.env.NEXT_PUBLIC_ACCOUNT_NAME ?? '';
+const now = new Date();
+const DEFAULT_START = format(startOfMonth(now), 'yyyy-MM-dd');
+const DEFAULT_END = format(endOfMonth(now), 'yyyy-MM-dd');
 
 interface FilterState {
   accountName: string;
@@ -25,8 +29,8 @@ const FilterContext = createContext<FilterContextType | null>(null);
 export function FilterProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<FilterState>({
     accountName: ACCOUNT_NAME,
-    startDate: '',
-    endDate: '',
+    startDate: DEFAULT_START,
+    endDate: DEFAULT_END,
     data: [],
     loading: false,
     error: null,
