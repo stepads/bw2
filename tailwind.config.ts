@@ -11,6 +11,17 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        accent: "#EBD9C6",
+        "bg-card": "#FAFAFA",
+        positive: "#16A34A",
+        negative: "#DC2626",
+      },
+      borderRadius: {
+        card: "12px",
+        btn: "8px",
+      },
+      fontFamily: {
+        sans: ["Inter", "Geist Sans", "system-ui", "sans-serif"],
       },
     },
   },
