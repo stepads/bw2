@@ -23,7 +23,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
           </button>
           <div className="flex items-center gap-2 text-sm">
             <Building2 className="w-4 h-4 text-black/50" />
-            <span className="font-medium">{accountName}</span>
+            <span className="font-medium">{accountName.replace(/^CA\d+\s*-\s*/, '')}</span>
           </div>
         </div>
         <DateRangeFilter />
